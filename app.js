@@ -13,7 +13,6 @@ const searchBar = document.querySelector('.search');
     axios.get(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`)
         .then(function (response) {
             // 가져온 데이터를 html요소에 추가하기
-            console.log(response);
             const items = response.data;
             items.forEach((item) => {
                 const li = document.createElement('li');
@@ -22,7 +21,7 @@ const searchBar = document.querySelector('.search');
                                 <p class="item-body">${item.body}</p>
                                 <div class="list-tag">${item.id}</div>`
                 lists.appendChild(li);
-            })         
+            })
         })
         .catch(function (error) {
             console.log(error);
@@ -57,8 +56,6 @@ window.addEventListener('scroll', () => {
         scrollHeight,
         clientHeight
     } = document.documentElement;
-
-    console.log(scrollTop, clientHeight, scrollHeight);
 
     if (scrollTop + clientHeight === scrollHeight) {
         showLoading();
